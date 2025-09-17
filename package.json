@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-     "vercel-build": "npm install --legacy-peer-deps && next build"
+     "vercel-build": "npm install --force"
   },
   "dependencies": {
     "@google/genai": "^1.20.0",
