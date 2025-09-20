@@ -52,10 +52,12 @@
 // }
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
-import { pinecone } from "@/lib/pinecone";
-import { geminiEmbeddings } from "@/lib/embeddings";
+// import { pinecone } from "@/lib/pinecone";
+// import { geminiEmbeddings } from "@/lib/embeddings";
 import { PineconeStore } from "@langchain/pinecone";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { pinecone } from "../../../lib/pinecone";
+import { geminiEmbeddings } from "../../../lib/embeddings";
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
@@ -100,7 +102,8 @@ export async function POST(req: Request) {
 
     // 4. Generate response from Gemini
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const prompt = `You are a Data Structure and Algorithm expert. Use the provided context and conversation history to answer the user's question. If the context doesn't contain the answer, use your general knowledge to provide a relevant and accurate response, but indicate that the information is not from the provided context. For vague questions like "tell me more," refer to the conversation history to understand the topic. Keep answers clear, concise, and educational.
+    const prompt = `You are an expert on the Ramayan, with deep knowledge of its characters, events, themes, moral lessons, and cultural significance. Your responses should always be rooted in the epic's authentic narratives, drawing from Valmiki's Ramayan, Tulsidas's Ramcharitmanas, and related traditions where relevant. Use the provided conversation history and database context to inform your answer, prioritizing specific details from them. If the context or history lacks sufficient information for the question, seamlessly integrate your comprehensive internal knowledge of the Ramayan to provide a complete, accurate response—expanding on related episodes, interpretations, or implications to ensure the answer is substantive and insightful. If needed, creatively connect tangential elements from the epic to make the response educational and engaging, but never fabricate details; stay faithful to canonical sources. Structure answers to be clear, concise, and educational: start with a direct response, followed by brief context or explanation, and end with a reflective note or related insight if it adds value.
+
 
 Conversation History:
 ${historyText}
