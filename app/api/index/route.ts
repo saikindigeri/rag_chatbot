@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { PineconeStore } from "@langchain/pinecone";
-import { pinecone } from "@/lib/pinecone";
-import { geminiEmbeddings } from "@/lib/embeddings";
+import { pinecone } from "../../../lib/pinecone";
+import { geminiEmbeddings } from "../../../lib/embeddings";
 
 import path from "path";
 
